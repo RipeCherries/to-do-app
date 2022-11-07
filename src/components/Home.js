@@ -1,11 +1,11 @@
 import react from 'react';
-import ToDoItem from './ToDoItem';
+import ToDoItem from './item/ToDoItem';
 
 const data = [
     {
         _id: 1,
         title: "Сделать React проект",
-        isCompleted: false
+        isCompleted: true
     },
     {
         _id: 2,
