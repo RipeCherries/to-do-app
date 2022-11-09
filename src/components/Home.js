@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import ToDoItem from './item/ToDoItem';
+import AddNote from './add-note/AddNote';
 
 const data = [
     {
@@ -20,19 +21,10 @@ const data = [
 ]
 
 const Home = () => {
-    const [notes, setNotes] = useState([]);
-    
-    useEffect(() => { setNotes(data); }, [])
+    const [notes, setNotes] = useState(data);
 
     const removeNote = (id) => {
-        console.log(id);
-        console.log("До:",notes);
-        const tmp = notes.filter(t => t._id !== id);
-        console.log(tmp);
-        setNotes((state) => state.filter(t => t._id !== id))
-        console.log("После:",notes);
-        //const new_notes = notes.filter(t => t._id !== id);
-        //setNotes(new_notes);
+        setNotes([...notes].filter(t => t._id !== id));
     }
 
     const changeNote = (id) => {
@@ -45,9 +37,10 @@ const Home = () => {
     return (
         <div className='text-white w-4/5 mx-auto'>
             <h1 className='text-2xl font-bold text-center mb-10'>ToDo App</h1>
-            {data.map(note => (
+            {notes.map(note => (
                 <ToDoItem key={note._id} note={note} changeNote={changeNote} removeNote={removeNote}/>
             ))}
+            <AddNote setNotes={setNotes} />
         </div>
     )
 }

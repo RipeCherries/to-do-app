@@ -4,8 +4,8 @@ import { BsTrash } from 'react-icons/bs';
 
 const ToDoItem = ( {note, changeNote, removeNote} ) => {
     return (
-        <div className='flex items-center justify-between mb-4 rounded-2xl bg-gray-800 p-5 w-full' onClick={() => changeNote(note._id)}>
-            <button className='flex items-center'>
+        <div className='flex items-center justify-between mb-4 rounded-2xl bg-gray-800 p-5 w-full'>
+            <button className='flex items-center' onClick={() => changeNote(note._id)}>
                 <Check isCompleted={note.isCompleted} />
                 <span className={`${note.isCompleted ? 'line-through' : ''}`}>{note.title}</span>
             </button>
